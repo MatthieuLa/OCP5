@@ -20,6 +20,7 @@ const slides = [
 
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
+const dot = document.querySelector(".dot");
 
 arrowLeft.addEventListener("click", () => {
   console.log("Flèche gauche");
@@ -28,3 +29,5 @@ arrowLeft.addEventListener("click", () => {
 arrowRight.addEventListener("click", () => {
   console.log("Flèche droite");
 });
+
+dot.classList.add("dot_selected");
