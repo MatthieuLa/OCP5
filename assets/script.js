@@ -18,16 +18,46 @@ const slides = [
   },
 ];
 
+// Variables
+
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const dot = document.querySelector(".dot");
+const img = document.querySelector(".banner-img");
+const paragraph = document.querySelector("#banner p");
+
+let index = 0;
+
+// Events
 
 arrowLeft.addEventListener("click", () => {
-  console.log("Flèche gauche");
+  index--;
+  if (index < 0) {
+    index = slides.length - 1;
+  }
+  updateSlide();
+  console.log(index);
 });
 
 arrowRight.addEventListener("click", () => {
-  console.log("Flèche droite");
+  index++;
+  if (index >= slides.length) {
+    index = 0;
+  }
+  updateSlide();
+  updateDot();
+  console.log(index);
 });
+
+// Function
+
+function updateSlide() {
+  img.src = `./assets/images/slideshow/${slides[index].image}`;
+  paragraph.innerHTML = slides[index].tagLine;
+}
+
+function updateDot() {
+  dot.classList.remove("dot_selected");
+}
 
 dot.classList.add("dot_selected");
