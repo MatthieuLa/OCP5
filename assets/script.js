@@ -22,7 +22,7 @@ const slides = [
 
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
-const dot = document.querySelector(".dot");
+const dots = document.querySelectorAll(".dot");
 const img = document.querySelector(".banner-img");
 const paragraph = document.querySelector("#banner p");
 
@@ -37,6 +37,7 @@ arrowLeft.addEventListener("click", () => {
   }
   updateSlide();
   console.log(index);
+  updateDots();
 });
 
 arrowRight.addEventListener("click", () => {
@@ -45,19 +46,23 @@ arrowRight.addEventListener("click", () => {
     index = 0;
   }
   updateSlide();
-  updateDot();
   console.log(index);
+  updateDots();
 });
 
-// Function
+// Fonctions
 
 function updateSlide() {
   img.src = `./assets/images/slideshow/${slides[index].image}`;
   paragraph.innerHTML = slides[index].tagLine;
 }
 
-function updateDot() {
-  dot.classList.remove("dot_selected");
+function updateDots() {
+  dots.forEach((dot, dotIndex) => {
+    if (dotIndex === index) {
+      dot.classList.add("dot_selected"); // Ajoute la classe 'dot_selected' au dot correspondant à l'index actuel
+    } else {
+      dot.classList.remove("dot_selected"); // Supprime la classe 'dot_selected' des autres dots
+    }
+  });
 }
-
-dot.classList.add("dot_selected");
